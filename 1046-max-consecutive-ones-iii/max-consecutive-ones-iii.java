@@ -1,31 +1,37 @@
 class Solution {
     public int longestOnes(int[] arr, int k) {
-        int count=0;
-        int Maxcount=0;
-        int temp=k;
-       for(int i=0;i<arr.length;i++)
-        
-{
-    for(int j=i;j<arr.length;j++){
-    if(arr[j]==1){
-        count++;
 
-    } 
-    else if(temp!=0){
-        count++;
-        temp--;
-    }
-    else{
-        
-        break;
-    }
-    }
-    Maxcount=Math.max(Maxcount,count);
-    temp=k;
-    count=0;
+        int i = 0;
+        int j = 0;
 
-}
- Maxcount=Math.max(Maxcount,count);
-return Maxcount;
+        int zeroCount = 0;
+        int maxLen = 0;
+
+        while (j < arr.length) {
+
+            // Step 1: Current element ko window me include karo
+            if (arr[j] == 0) {
+                zeroCount++;
+            }
+
+            // Step 2: Agar window invalid ho gayi
+            while (zeroCount > k) {
+
+                // Left side se zero bahar gaya?
+                if (arr[i] == 0) {
+                    zeroCount--;
+                }
+
+                i++;
+            }
+
+            // Step 3: Ab window valid hai
+            maxLen = Math.max(maxLen, j - i + 1);
+
+            // Step 4: Window ko expand karo
+            j++;
+        }
+
+        return maxLen;
     }
 }
