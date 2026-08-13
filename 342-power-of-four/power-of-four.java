@@ -1,13 +1,21 @@
 class Solution {
+    int temp=0;
     public boolean isPowerOfFour(int n) {
-       long i=1;
-       while(i<=n){
-      if(i==n){
+        temp=n;
+       return helper(1);
+       
+}
+
+public boolean helper(long i){
+    
+    if(temp==i){
         return true;
-      }
-      i=i*4;
-       }
-       return false;
     }
+    else if(i>temp){
+        return false;
+    }
+     
+    return helper(i*4);
+}
 }
 
