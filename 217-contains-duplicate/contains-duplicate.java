@@ -10,14 +10,11 @@ class Solution {
             else {
                 int freq=map.get(nums[i]);
                 map.put(nums[i],freq+1);
+                if(map.get(nums[i])>1) return true;
             }
         }
 
-        for(int ele:map.keySet()){
-            if(map.get(ele)>1) return true;
-        }
         return false;
-
         
         }
     }
