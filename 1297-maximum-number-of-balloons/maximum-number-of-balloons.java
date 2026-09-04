@@ -1,8 +1,9 @@
 class Solution {
     public int maxNumberOfBalloons(String s) {
        int[] arr=new int[26];
-        for(int i=0;i<s.length();i++){
-            char ele=s.charAt(i);
+       char[] str=s.toCharArray();
+        for(int i=0;i<str.length;i++){
+            char ele=str[i];
            
             int index=ele-'a';
             arr[index]=arr[index]+1;
