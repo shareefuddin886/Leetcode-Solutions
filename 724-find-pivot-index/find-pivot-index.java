@@ -1,35 +1,19 @@
 class Solution {
-    public int pivotIndex(int[] arr) {
-      
-    //     for(int i=0;i<arr.length;i++){
-    //     int leftsum=0;
-    //     int rightsum=0;
+    public int pivotIndex(int[] nums) {
+        int totalsum=0;
+       for(int i=0;i<nums.length;i++){
+        totalsum+=nums[i];
+       }
+       int prefixsum=0;
+       int pindex=-1;
+       for(int i=0;i<nums.length;i++){
+        if(i==0){ prefixsum=0; }
 
-    //    for(int j=0;j<i;j++ ){
-    //     leftsum+=arr[j];
-    //    }
+        else prefixsum+=nums[i-1];
+        int suffixsum=totalsum-prefixsum-nums[i];
+        if(prefixsum==suffixsum) return i;
+       } 
 
-    //    for(int j=i+1;j<arr.length;j++){
-    //     rightsum+=arr[j];
-    //    }
-
-    //    if(leftsum==rightsum) return i;
-    //     }
-    //     return -1;
-
-    int totalsum=0;
-    for(int i=0;i<arr.length;i++){
-        totalsum+=arr[i];
-    }
-   int leftsum=0;
-    for(int i=0;i<arr.length;i++){
-        if(leftsum==totalsum-leftsum-arr[i]){
-            return i;
-        }
-        else{
-            leftsum+=arr[i];
-        }
-    }
-    return -1;
+       return -1;
     }
 }
