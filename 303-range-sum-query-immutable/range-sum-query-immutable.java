@@ -1,20 +1,18 @@
 class NumArray {
- int arr[];
-
- 
+     int[] prefixarray;
     public NumArray(int[] nums) {
-        arr=nums;
+         prefixarray=nums;
         int sum=0;
-         for(int i=0;i<nums.length;i++){
-          sum=sum+arr[i];
-          arr[i]=sum;
-         }
-         
+        for(int i=0;i<nums.length;i++){
+          sum=sum+nums[i];
+          prefixarray[i]=sum;
+        }
     }
     
     public int sumRange(int left, int right) {
-        if(left==0) return arr[right];
-        return arr[right]-arr[left-1];
+        if(left==0) return prefixarray[right];
+        int leftsum=prefixarray[left-1];
+        return prefixarray[right]-leftsum;
     }
 }
 
@@ -23,4 +21,3 @@ class NumArray {
  * NumArray obj = new NumArray(nums);
  * int param_1 = obj.sumRange(left,right);
  */
-
