@@ -6,6 +6,7 @@ class Solution {
         map.put(0,-1);
         for(int i=0;i<nums.length;i++){
             prefix=prefix+nums[i];
+             if(prefix%k==0 && i>=1) return true;
              if(!map.containsKey(prefix%k)){
                 map.put(prefix%k,i);
                
