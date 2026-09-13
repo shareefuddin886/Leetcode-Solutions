@@ -6,13 +6,14 @@ class Solution {
         map.put(0,-1);
         for(int i=0;i<nums.length;i++){
             prefix=prefix+nums[i];
-             if(prefix%k==0 && i>=1) return true;
-             if(!map.containsKey(prefix%k)){
-                map.put(prefix%k,i);
+            int rem=prefix%k;
+             if(rem==0 && i>=1) return true;
+             if(!map.containsKey(rem)){
+                map.put(rem,i);
                
             }
             else{
-                int value=i-map.get(prefix%k);
+                int value=i-map.get(rem);
                 if(value>=2){
                     return true;
                 }
